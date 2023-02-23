@@ -1,11 +1,12 @@
-import egetLogo from './assets/images/logo-eget.png'
-import './App.css'
+import Navbar from './components/Navbar'
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <img src={egetLogo} alt="Logo e-Get" />
-    </div>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   )
 }
 
