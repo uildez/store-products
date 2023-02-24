@@ -21,9 +21,6 @@ const Navbar = () => {
                     <NavLink to="/about">Sobre</NavLink>
                     <NavLink to="/products">Produtos</NavLink>
                 </NavMenu>
-                <NavBtn>
-                    <NavBtnLink />
-                </NavBtn>
             </Nav>
             {menuVisible ? <MenuMobile /> : ""}
         </>
