@@ -156,3 +156,34 @@ export const BtnDelete = styled.button`
         background-color: #a10909;
     }
 `
+
+export const Tab = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    
+    p{
+        color: #101010;
+        padding-bottom: "1rem"
+    }
+`
+
+export const BtnAdd = styled.button`
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: #00BEED;
+    color: #fff;
+    padding: .8rem 1rem;
+    border-radius: .5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0px;
+    
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #00A8D7;
+    }
+`
