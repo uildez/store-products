@@ -17,7 +17,6 @@ export const Container = styled.div`
     background: #fff;
     width: 50%;
     border-radius: 10px;
-    padding: 0.75rem;
     transform: translate(50%, 50%);
     color: #00BEED;
     padding: 1rem 2rem;
@@ -27,6 +26,16 @@ export const Container = styled.div`
         align-items: center;
         justify-content: space-between;
         margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem 2rem;
+        width: 80%;
+        transform: translate(12%, 50%);
+
+        h2 {
+            font-size: 1.3rem;
+        }
     }
 `;
 
@@ -41,6 +50,11 @@ export const Form = styled.form`
         display: flex;
         gap: 1rem;
         justify-content: space-between;
+        
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            gap: .5rem;
+        }
     }
 
     input, select{
@@ -69,6 +83,7 @@ export const Form = styled.form`
 export const BtnSave = styled.button`
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .5rem;
     width: 20%;
     right: 0;
@@ -83,6 +98,10 @@ export const BtnSave = styled.button`
     &:hover {
         transition: all 0.2s ease-in-out;
         background: #00A8D7;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 50%;
     }
 `
 
