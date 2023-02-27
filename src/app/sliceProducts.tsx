@@ -10,7 +10,7 @@ export interface Products {
     latest_alteration: string;
 }
 
-const INITIAL_STATE: Products[] = Data.map((product: Products) => {
+export const INITIAL_STATE: Products[] = Data.map((product: Products) => {
     return {
         id: product.id,
         product: product.product,
@@ -37,6 +37,14 @@ const sliceProducts = createSlice({
                 state[index] = action.payload;
             }
         }
+    },
+    extraReducers: builder => {
+        builder.addMatcher(
+            action => action.type.endsWith('/rejected'),
+            (state, action) => {
+                console.log(`${action.type} error: ${action.error.message}`);
+            }
+        );
     },
 })
 
