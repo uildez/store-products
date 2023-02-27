@@ -1,13 +1,17 @@
 import React from 'react'
 import { Container, NavLink, NavMenu } from './menuStyles'
 
-export const MenuMobile = () => {
+interface Props {
+    onClose: () => void;
+}
+
+export const MenuMobile = ({ onClose }: Props) => {
     return (
         <Container>
             <NavMenu>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/about">Sobre</NavLink>
-                <NavLink to="/products">Produtos</NavLink>
+                <NavLink to="/" onClick={onClose}>Home</NavLink>
+                <NavLink to="/about" onClick={onClose}>Sobre</NavLink>
+                <NavLink to="/products" onClick={onClose}>Produtos</NavLink>
             </NavMenu>
         </Container>
     )

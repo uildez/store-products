@@ -11,6 +11,6 @@ export const Container = styled.section`
     
     @media screen and (max-width: 768px) {
         padding: 1rem;
-        margin: 1rem 0;
+        margin: 1rem 2rem;
     }
 `

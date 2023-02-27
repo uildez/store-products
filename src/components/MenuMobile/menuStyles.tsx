@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 export const Container = styled.section`
     background: rgba(238, 238, 238, 0.9);
     backdrop-filter: blur(3px);
-    height: 100%;
+    height: 50%;
     width: 100%;
     display: flex;
     position: absolute;
@@ -14,18 +14,9 @@ export const Container = styled.section`
     justify-content: center;
     padding: 0.5rem calc((100vw - 1200px) / 2);
     z-index: 20;
-    transform: translateY(0px);
-    transition: all 2s;
     
     @media screen and (min-width: 768px) {
-        transform: translateY(-50px);
-        transition: all 2s;
         display: none;
-    }
-    
-    &.open{
-        opacity: 0;
-        display: flex;
     }
 `
 
@@ -58,7 +49,6 @@ export const NavMenu = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: -24px;
 `
 
 export const NavLink = styled(Link)`

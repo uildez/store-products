@@ -46,17 +46,22 @@ export const Form = styled.form`
     input, select{
         width: 100%;
         background: #fff;
-        color: #00BEED;
+        color: #101010;
         border: solid #00BEED;
         font-size: 1rem;
         cursor: pointer;
         padding: .5rem 0rem;
         padding-left: 1rem;
         border-radius: .5rem;
+
+        &:focus{
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
         
         &:hover {
             transition: all 0.2s ease-in-out;
-            color: #00A8D7;
+            color: #101010;
         }
     }
 `

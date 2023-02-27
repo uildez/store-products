@@ -10,6 +10,10 @@ export const Nav = styled.nav`
     justify-content: space-between;
     padding: 1rem 5rem;
     z-index: 10;
+    
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
 `
 
 export const NavLink = styled(Link)`

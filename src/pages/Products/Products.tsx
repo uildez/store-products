@@ -9,8 +9,8 @@ import { addProduct, editProduct, removeProduct, useProducts } from '../../app/s
 import { Modal } from '../../components/Modal';
 import moment from 'moment';
 
-import { ActionButtons, BtnAdd, BtnDelete, BtnEdit, Container, Gallery, InputStyled, Product, Search, Select, Tab } from './productsStyle'
-import { FaEdit, FaPlus, FaTrashAlt } from 'react-icons/fa';
+import { ActionButtons, BtnAdd, BtnDelete, BtnEdit, Container, Gallery, InputStyled, NotFound, Product, Search, Select, Tab } from './productsStyle'
+import { FaEdit, FaPlus, FaSearch, FaTrashAlt } from 'react-icons/fa';
 
 export interface ProductsInterface {
     id: number;
@@ -101,7 +101,7 @@ export const Products = () => {
                             onChange={event => setSelectedValue(event.target.value)}
                         >
                             <option value="" hidden>
-                                Filtre por categoria
+                                Filtre por valor
                             </option>
                             <option value="3">Até R$3</option>
                             <option value="5">Até R$5</option>
@@ -117,7 +117,7 @@ export const Products = () => {
 
                 <Gallery>
                     {
-                        listProducts.map(products => (
+                        listProducts.length > 0 ? <>{listProducts.map(products => (
                             <Product key={products.id}>
                                 <img src={products.image} alt={products.product} />
                                 <h2>{products.product}</h2>
@@ -132,8 +132,7 @@ export const Products = () => {
                                     <BtnDelete onClick={() => handleDeleteProduct(products)} className='delete'><FaTrashAlt />Deletar</BtnDelete>
                                 </ActionButtons>
                             </Product>)
-                        )
-                    }
+                        )}</> : <NotFound><FaSearch /> Sem Produtos para a pesquisa ou filtro</NotFound>}
                 </Gallery>
                 {selectedProduct && (
                     <Modal

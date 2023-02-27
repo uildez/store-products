@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import egetLogo from '../../assets/images/logo-eget-icon.png'
 import { MenuMobile } from '../MenuMobile'
 import { Close } from '../MenuMobile/menuStyles'
-import { Bars, Nav, NavBtn, NavBtnLink, NavLink, NavMenu } from './navbarStyles'
+import { Bars, Nav, NavLink, NavMenu } from './navbarStyles'
 
 const Navbar = () => {
     const [menuVisible, setMenuVisible] = useState(false)
@@ -22,7 +22,7 @@ const Navbar = () => {
                     <NavLink to="/products">Produtos</NavLink>
                 </NavMenu>
             </Nav>
-            {menuVisible ? <MenuMobile /> : ""}
+            {menuVisible ? <MenuMobile onClose={() => setMenuVisible(false)} /> : ""}
         </>
     )
 }

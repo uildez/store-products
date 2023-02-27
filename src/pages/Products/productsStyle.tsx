@@ -11,7 +11,7 @@ export const Container = styled.section`
     
     @media screen and (max-width: 768px) {
         padding: 1rem;
-        margin: 1rem 0;
+        margin: 1rem 2rem;
     }
 `
 
@@ -23,13 +23,25 @@ export const Search = styled.div`
 
     div{
         display: flex;
+        max-width: 100%;
         gap: 1rem;
+        
+        @media screen and (max-width: 768px) {
+            gap: 0;
+            margin-top: 1rem;
+            justify-content: space-between;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;        
     }
 `
 
 export const Gallery = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    position: relative;
     gap: 2rem;
     width: 100%;
     height: 100%;
@@ -80,18 +92,27 @@ export const Product = styled.div`
 
 export const InputStyled = styled.input`
     background: #fff;
-    color: #00BEED;
+    color: #101010;
     border: solid #00BEED;
     font-size: 1rem;
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     padding-left: 1rem;
     height: 60px;
     border-radius: .5rem;
+
+    &:focus{
+        box-shadow: 0 0 0 0;
+        outline: 0;
+    }
     
     &:hover {
         transition: all 0.2s ease-in-out;
-        color: #00A8D7;
+        color: #101010;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem .7rem;
     }
 `
 
@@ -101,7 +122,7 @@ export const Select = styled.select`
     border: solid #00BEED;
     font-size: 1rem;
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     height: 60px;
     border-radius: .5rem;
     font-size: 14px;
@@ -114,6 +135,10 @@ export const Select = styled.select`
         min-height: 20px;
         padding: 0px 2px 1px;
     }
+    
+    @media screen and (max-width: 768px) {
+        padding: 1rem .7rem;
+    }   
 `;
 
 export const ActionButtons = styled.div`
@@ -186,4 +211,18 @@ export const BtnAdd = styled.button`
         transition: all 0.2s ease-in-out;
         background: #00A8D7;
     }
+`
+
+export const NotFound = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    margin-top: 4rem;
+    font-size: 1.2rem;
+    text-align: center;
+    gap: 2rem;
+    align-items: center;
+    top: 0;
+    justify-content: center;
 `

@@ -7,6 +7,10 @@ export const Container = styled.section`
     padding: 1rem 4rem;
     width: 100%;
     height: 100%;
+    
+    @media screen and (max-width: 768px) {
+        padding: 1rem 2rem;
+    } 
 `
 
 export const Profile = styled.div`
@@ -22,6 +26,16 @@ export const Profile = styled.div`
         width: 100%;
         margin-left: 2rem;
     }
+    
+    @media screen and (max-width: 768px) {
+        flex-direction: column;  
+        
+        div{
+            text-align: center;
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+    } 
 `
 
 export const BtnProfile = styled(Link)`
@@ -46,8 +60,8 @@ export const Grid = styled.section`
     width: 100%;
     height: 80%;
     
-    @media screen and (min-width: 768px) {
-        grid-template-columns: 1;       
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;       
     } 
 `
 
@@ -77,6 +91,10 @@ export const Card = styled(Link)`
     p{
         font-size: 1rem;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    } 
 `
 
 export const CardDisabled = styled(Link)`
