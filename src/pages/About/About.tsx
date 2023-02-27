@@ -1,7 +1,10 @@
 import React from 'react'
+import { Container } from './aboutStyle'
 
 export const About = () => {
     return (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh" }}>About</div>
+        <Container>
+            <h2>Sobre o Projeto</h2>
+        </Container>
     )
 }

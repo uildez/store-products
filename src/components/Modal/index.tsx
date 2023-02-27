@@ -24,10 +24,10 @@ interface Product {
 
 
 export const Modal = ({ id, product, image, category, price, latest_alteration, onProductUpdate, onClose }: Props) => {
-    const [selectedProduct, setSelectedProduct] = useState(product)
-    const [selectedImage, setSelectedImage] = useState(image)
-    const [selectedCategory, setSelectedCategory] = useState(category)
-    const [selectedPrice, setSelectedPrice] = useState(price)
+    const [selectedProduct, setSelectedProduct] = useState(product || '')
+    const [selectedImage, setSelectedImage] = useState(image || '')
+    const [selectedCategory, setSelectedCategory] = useState(category || '')
+    const [selectedPrice, setSelectedPrice] = useState(price || '')
 
     const handleSave = () => {
         const updatedProduct: Product = {
@@ -52,18 +52,22 @@ export const Modal = ({ id, product, image, category, price, latest_alteration, 
                     />
                 </div>
                 <Form>
-                    <input onChange={event => setSelectedProduct(event.target.value)} type="text" placeholder='Adicione o nome' value={selectedProduct} />
-                    <input onChange={event => setSelectedImage(event.target.value)} type="url" placeholder='Foto do produto (url)' value={selectedImage} />
+                    <input onChange={event => setSelectedProduct(event.target.value)} type="text" placeholder='Adicione o nome' value={selectedProduct} required />
+                    <input onChange={event => setSelectedImage(event.target.value)} type="url" placeholder='Foto do produto (url)' value={selectedImage} required />
                     <div>
                         <select placeholder='Escolha a Categoria'
                             value={selectedCategory}
                             onChange={event => setSelectedCategory(event.target.value)}
+                            required
                         >
+                            <option value="" hidden>
+                                Escolha uma categoria
+                            </option>
                             <option value="Material Escolar">Material Escolar</option>
                             <option value="Construção">Construção</option>
                             <option value="Comida">Comida</option>
                         </select>
-                        <input onChange={event => setSelectedPrice(event.target.value)} value={selectedPrice} type="currency" min="1" step="any" placeholder='Adicione o preço' />
+                        <input onChange={event => setSelectedPrice(event.target.value)} value={selectedPrice} type="currency" min="1" step="any" placeholder='Adicione o preço' required />
                     </div>
                     <BtnSave onClick={handleSave}><FaPlus /> Salvar</BtnSave>
                 </Form>

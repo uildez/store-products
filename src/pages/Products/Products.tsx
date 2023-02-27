@@ -1,11 +1,16 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import React, { useEffect, useState } from 'react'
-import { ActionButtons, BtnAdd, BtnDelete, BtnEdit, Container, Gallery, InputStyled, Product, Search, Select, Tab } from './productsStyle'
-import Data from "../../data/mockData.json"
-import { FaEdit, FaPlus, FaTrashAlt } from 'react-icons/fa';
+import React, { useState } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct, editProduct, removeProduct, useProducts } from '../../app/sliceProducts';
+
+
 import { Modal } from '../../components/Modal';
 import moment from 'moment';
+
+import { ActionButtons, BtnAdd, BtnDelete, BtnEdit, Container, Gallery, InputStyled, Product, Search, Select, Tab } from './productsStyle'
+import { FaEdit, FaPlus, FaTrashAlt } from 'react-icons/fa';
 
 export interface ProductsInterface {
     id: number;
@@ -23,19 +28,16 @@ const sanitizeSearch = (value: string) => value
     .toLowerCase()
 
 export const Products = () => {
-    const [products, setProducts] = useState<ProductsInterface[]>([])
     const [selectedProduct, setSelectedProduct] = useState<ProductsInterface | null>(null);
     const [searchTerm, setSearchTerm] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("");
     const [selectedValue, setSelectedValue] = useState("");
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        const data = Data
-        setProducts(data)
-    }, [])
+    const useproducts = useSelector(useProducts)
+    const dispatch = useDispatch()
 
-    const listProducts = products.filter(product => {
+    const listProducts = useproducts.filter(product => {
         const hasCategory = !selectedCategory ? true : product.category === selectedCategory
         const hasValue = !selectedValue ? true : parseInt(product.price) <= parseInt(selectedValue)
         const hasTerm = sanitizeSearch(product.product).includes(sanitizeSearch(searchTerm))
@@ -45,32 +47,23 @@ export const Products = () => {
 
     // Add product
     const handleProductAddition = (newProduct: ProductsInterface) => {
-        const updatedProducts = [...products, newProduct]
-        setProducts(updatedProducts)
+        const updatedProducts = {
+            id: newProduct.id,
+            product: newProduct.product,
+            image: newProduct.image,
+            category: newProduct.category,
+            price: newProduct.price,
+            latest_alteration: newProduct.latest_alteration
+        };
+        dispatch(addProduct(updatedProducts));
         setShowModal(false)
     }
-
-    // const handleNewProductUpdate = (updatedProduct: ProductsInterface) => {
-    //     setProducts((prevProducts) => {
-    //         return prevProducts.map((product) =>
-    //             product.id === updatedProduct.id ? updatedProduct : product
-    //         );
-    //     });
-    //     setSelectedProduct(null);
-    // };
-
-    // const addProduct = () => {
-    //     const newProduct = { id: products.length + 1, product: "test", image: "string", category: "string", price: "0", amount: 10, latest_alteration: moment().format('MMMM Do YYYY, h:mm:ss a') };
-    //     setProducts([...products, newProduct]);
-    //     listProducts
-    // };
 
     // Delete product
     const handleDeleteProduct = (productDelete: ProductsInterface) => {
         const text = `Certeza que deseja deletar o Produto ${productDelete.product}?`;
         if (confirm(text) === true) {
-            const updatedProducts = products.filter((product) => product.id !== productDelete.id);
-            setProducts(updatedProducts);
+            dispatch(removeProduct(productDelete.id));
         } else {
             null
         }
@@ -82,11 +75,7 @@ export const Products = () => {
     };
 
     const handleProductUpdate = (updatedProduct: ProductsInterface) => {
-        setProducts((prevProducts) => {
-            return prevProducts.map((product) =>
-                product.id === updatedProduct.id ? updatedProduct : product
-            );
-        });
+        dispatch(editProduct(updatedProduct));
         setSelectedProduct(null);
     };
 
@@ -142,8 +131,8 @@ export const Products = () => {
                                     <BtnEdit onClick={() => handleProductClick(products)} className='edit'><FaEdit />Editar</BtnEdit>
                                     <BtnDelete onClick={() => handleDeleteProduct(products)} className='delete'><FaTrashAlt />Deletar</BtnDelete>
                                 </ActionButtons>
-                            </Product>
-                        ))
+                            </Product>)
+                        )
                     }
                 </Gallery>
                 {selectedProduct && (
@@ -160,13 +149,13 @@ export const Products = () => {
                 )}
                 {showModal && (
                     <Modal
+                        id={useproducts.length + 1}
                         latest_alteration={moment().format('L')}
                         onClose={() => setShowModal(false)}
                         onProductUpdate={(updatedProduct) => handleProductAddition(updatedProduct)}
                     />
                 )}
             </Container>
-            {console.log(selectedProduct)}
         </>
     )
 }
