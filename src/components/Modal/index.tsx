@@ -60,7 +60,7 @@ export const Modal = ({ id, product, image, category, price, latest_alteration, 
                             onChange={event => setSelectedCategory(event.target.value)}
                             required
                         >
-                            <option value="" hidden>
+                            <option hidden>
                                 Escolha uma categoria
                             </option>
                             <option value="Material Escolar">Material Escolar</option>
