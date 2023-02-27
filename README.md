@@ -1,4 +1,4 @@
-<h1 align="center" color="white"><img height="40" valign="top" src="./src/assets/images/SVG/logo-light.svg"/>  Store<strong>Products</strong></h1>
+<h1 align="center" color="white"><img height="40" valign="top" src="./src/assets/images/logo-eget-icon.png"/>  Store<strong>Products</strong></h1>
 
 <div align="center"><img src="./src/assets/images/storeProduct.gif" width="900"/></div>
 <h2 align="center"><a color="white" href="https://store-products.vercel.app">Acessar aplicação</a></h2>
