@@ -13,13 +13,13 @@ interface Props {
     onProductUpdate: (updatedProduct: Product) => void;
 }
 
-interface Product {
-    id?: number;
-    product?: string;
-    image?: string;
-    category?: string;
-    price?: string;
-    latest_alteration?: string;
+export interface Product {
+    id: number;
+    product: string;
+    image: string;
+    category: string;
+    price: string;
+    latest_alteration: string;
 }
 
 
@@ -31,12 +31,12 @@ export const Modal = ({ id, product, image, category, price, latest_alteration, 
 
     const handleSave = () => {
         const updatedProduct: Product = {
-            id: id,
+            id: id ?? 0,
             product: selectedProduct,
             image: selectedImage,
             category: selectedCategory,
             price: selectedPrice,
-            latest_alteration: latest_alteration,
+            latest_alteration: latest_alteration ?? "",
         }
 
         onProductUpdate(updatedProduct);
