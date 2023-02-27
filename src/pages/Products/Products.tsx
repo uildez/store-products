@@ -89,7 +89,7 @@ export const Products = () => {
                         <Select value={selectedCategory}
                             onChange={event => setSelectedCategory(event.target.value)}
                         >
-                            <option hidden>
+                            <option value="" hidden>
                                 Filtre por categoria
                             </option>
                             <option value="Material Escolar">Material Escolar</option>
@@ -100,7 +100,7 @@ export const Products = () => {
                         <Select value={selectedValue}
                             onChange={event => setSelectedValue(event.target.value)}
                         >
-                            <option hidden>
+                            <option value="" hidden>
                                 Filtre por valor
                             </option>
                             <option value="3">Até R$3</option>
